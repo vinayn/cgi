@@ -1,0 +1,36 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set classes = [
+    'clear-both',
+] %}
+
+<h2>From Our blogs </h2>
+<div{{ attributes.addClass(classes) }}>
+    {% for data in feeddata %}
+	
+		<div class="cust2colcontainer custmargin">
+			<div class="custblogimage">
+			
+				<img src="{{data.image}}" alt="blogimage"/>
+			</div>
+			
+			<div>
+				<div>{{data.author}}</div>
+				<h2>{{data.title}}</h2>
+				
+				<div>{{data.date | date('F d,Y')}}</div>
+				<div>{{data.category}}</div>
+			</div>
+		</div>
+
+			
+    {% endfor %}
+</div>

@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * This is the module to create the Related media component.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function cgi_related_media_theme() {
+  return [
+    'related_media_content' => [
+      'variables' => [
+        'mediaAnnouncementTaxonomynid' => NULL,
+        'brouchureTaxonomynid' => NULL,
+        'whitepaperTaxonomynid' => NULL,
+        'remainingrecords' => NULL,
+      ],
+    ],
+	'externalfeedcustom' => [
+      'variables' => [
+        'feeddata' => NULL,
+      ],
+      'render element' => 'children',
+    ],
+  
+  ];
+}
+
+

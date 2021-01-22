@@ -1,0 +1,4 @@
+two-columncustom:
+  css:
+    theme:
+      css/two-columncustom.css: {}

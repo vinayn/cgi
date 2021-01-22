@@ -1,0 +1,30 @@
+.cust2colcontainer {
+	display:flex;
+	flex-direction: row;
+
+}
+
+.inner2equalcol > div {
+		flex-basis: 100%;
+		margin-right:2rem;
+}
+
+.custfirstcol {
+
+	width:75%;
+}
+.custblogimage {
+	margin-right:1rem;
+}	
+.custblogimage img {
+	
+	width:100px;
+	
+}	
+
+.custsecondcol {
+	width:25%;
+}
+.custmargin {
+	margin-bottom:2rem;
+}	

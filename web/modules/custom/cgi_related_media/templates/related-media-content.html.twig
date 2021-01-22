@@ -1,0 +1,182 @@
+{#
+/**
+* @file
+* Default theme implementation to display a block.
+*
+* @see template_preprocess_block()
+*
+* @ingroup themeable
+*/
+#}
+{% set classes = [
+    'clear-both',
+] %}
+
+
+
+{{attach_library('cgi_related_media/two-columncustom')}}
+
+
+<div class="cust2colcontainer">
+
+	<div class="custfirstcol">
+	
+		<div class="cust2colcontainer inner2equalcol">
+			{% if mediaAnnouncementTaxonomynid %}
+
+				<div>
+				
+					<div>
+						{% if mediaAnnouncementTaxonomynid.field_image.url %}
+							<img src="{{file_url(mediaAnnouncementTaxonomynid.field_image.url)}}" alt={{mediaAnnouncementTaxonomynid.field_image.alt}} />
+						
+						{% endif %}
+					</div>
+					
+					<h2>
+						<a href="{{mediaAnnouncementTaxonomynid.url}}" > {{mediaAnnouncementTaxonomynid.title}} </a>
+					</h2>
+					
+					<div>
+					{{mediaAnnouncementTaxonomynid.field_media_category |join('|')}}
+					</div>
+					
+					
+					
+				
+				</div>
+			{% endif %}
+			
+			
+			{% if brouchureTaxonomynid %}
+			
+				<div>
+				
+					
+					
+					
+					
+					<div>
+						<div> 
+						{% if brouchureTaxonomynid.field_image.url %}
+						
+								<img src="{{file_url(brouchureTaxonomynid.field_image.url)}}" alt={{brouchureTaxonomynid.field_image.alt}} />
+						{% endif %}
+						</div>
+						
+						<div>
+						<h2>
+							<a href="{{brouchureTaxonomynid.url}}" > {{brouchureTaxonomynid.title}}  </a>
+						</h2>	
+						</div>
+					</div>
+					
+					<div>
+						{{brouchureTaxonomynid.field_media_category |join('|') }}
+					</div>
+				
+				</div>
+			
+			{% endif %}
+		
+		</div>
+		
+		
+		
+			<div>
+			
+					<div>
+					
+							{% if whitepaperTaxonomynid %}
+							
+								<div>
+								
+									
+									<h2>
+										<a href="{{whitepaperTaxonomynid.url}}" > {{whitepaperTaxonomynid.title}} </a>
+									</h2>
+									
+									<div class="cust2colcontainer">
+										<div> 
+										{% if whitepaperTaxonomynid.field_image.url %}
+										
+												<img src="{{file_url(whitepaperTaxonomynid.field_image.url | image_style('thumbnail'))}}" alt={{whitepaperTaxonomynid.field_image.alt}} />
+										{% endif %}
+										</div>
+										
+										<div>
+										
+											{% set whitepapernodetext = whitepaperTaxonomynid.body|render|striptags|trim %}
+											
+											{{ (whitepapernodetext|length > 200 ? whitepapernodetext|slice(0, 201)|split(' ')|slice(0, -1)|join(' ') ~ '&hellip;' : whitepapernodetext)|raw }}</code>
+										
+											<div>
+													{{brouchureTaxonomynid.field_media_category | join('|') }}
+											</div>
+										
+										</div>
+									</div>
+									
+
+								
+								</div>
+							
+							{% endif %}
+					
+					</div>
+			
+			
+					{% if remainingrecords %}
+						{% for eachremainingrecord in remainingrecords %}
+							<div>
+							
+								<h2>
+									<a href="{{eachremainingrecord.url}}" > {{eachremainingrecord.title}} </a>
+								</h2>
+								
+								<div class="cust2colcontainer">
+								
+									<div>
+										{% if eachremainingrecord.field_image.url %}
+											<img src="{{file_url(eachremainingrecord.field_image.url|image_style('thumbnail'))}}" alt={{whitepaperTaxonomynid.field_image.alt}} />
+										{% endif %}
+									</div>
+									
+									
+									
+									<div>
+										{% set remainingrecordstext = eachremainingrecord.body|render|striptags|trim %}
+										
+										{{ (remainingrecordstext|length > 200 ? remainingrecordstext|slice(0, 201)|split(' ')|slice(0, -1)|join(' ') ~ '&hellip;' : remainingrecordstext)|raw }}</code>
+										
+										<div>
+											{{eachremainingrecord.field_media_category |join('|') }}
+										</div>	
+										
+									</div>
+								
+								</div>
+								
+								
+							</div>	
+						
+						{% endfor %}
+					{% endif %}
+			
+			</div>
+		
+		
+	
+	
+	</div>
+	
+	<div class="custsecondcol">
+	
+			{{ drupal_block('externalfeedcustom') }}
+	
+	</div>
+
+</div>
+
+
+
